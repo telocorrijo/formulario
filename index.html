@@ -74,18 +74,49 @@
   </form>
 </body>
 <script>
-  const audio = new Audio('Jung Kook - 3D (Lyrics) ft. Jack Harlow.mp3'); 
+  // Lista de canciones
+  const canciones = [
+    'Jung Kook - 3D (Lyrics) ft. Jack Harlow.mp3',
+    '지민 (Jimin)  Who  Official MV.mp3',
+    'KATSEYE (캣츠아이)  Touch  Official MV.mp3',
+    'RM  LOST!  Official MV.mp3',
+    'ROSÉ & Bruno Mars - APT..mp3',
+    'V  Rainy Days  Official MV.mp3',
+    '네게 닿을 때까지.mp3',
+    'KATSEYE (캣츠아이)  Debut  Official MV.mp3',
+    'Another Level.mp3'
+  ];
 
-  const inputs = document.querySelectorAll('input');
+  const audio = new Audio();
 
-  inputs.forEach(input => {
-    input.addEventListener('input', () => {
-      if (audio.paused) {
-        audio.loop = true;
-        audio.volume = 0.5; 
-        audio.play();
-      }
-    });
+// Función para seleccionar una canción aleatoria
+const getRandomSong = () => {
+  const randomIndex = Math.floor(Math.random() * canciones.length); // Índice aleatorio
+  return canciones[randomIndex];
+};
+
+// Función para reproducir una canción aleatoria
+const playRandomSong = () => {
+  const randomSong = getRandomSong();
+  audio.src = randomSong;
+  audio.play();
+};
+
+// Evento que escucha cuando termina una canción
+audio.addEventListener('ended', () => {
+  playRandomSong(); // Reproducir otra canción aleatoria
+});
+
+// Iniciar reproducción cuando el usuario escriba en cualquier input
+const inputs = document.querySelectorAll('input');
+inputs.forEach(input => {
+  input.addEventListener('input', () => {
+    if (audio.paused) {
+      audio.loop = false; // No hace falta bucle porque manejamos el evento 'ended'
+      audio.volume = 0.5;
+      playRandomSong();
+    }
   });
+});
 </script>
 </html>
