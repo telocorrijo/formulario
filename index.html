@@ -49,7 +49,7 @@
   </style>
 </head>
 <body>
-  <form action="https://script.google.com/macros/s/AKfycbxtdI5VuNN8Rx_T24BDIGmjZ-NzhSmhUF0lWogfpGpFI-pYHc0ITpQMSgQpeiZ0EUHB/exec" method="post">
+  <form action="https://script.google.com/macros/s/AKfycby1Lbi9tWTV4dzpw_DPijZd5jIUx898_wKdawOFC15puTjFKtJ5GOMyby8qUhp0sSYB/exec" method="post">
  
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" required>
@@ -65,7 +65,10 @@
 
     <label for="abono">Abono:</label>
     <input type="number" id="abono" name="abono" required>
-    
+
+    <label for="abonoEx">Abono Extra:</label>
+    <input type="number" id="abonoEx" name="abonoEx">
+
     <label for="totalPagar">Total a pagar:</label>
     <input type="number" id="totalPagar" name="totalPagar" required>
         
@@ -73,7 +76,7 @@
     <button type="reset">Limpiar</button>
   </form>
 </body>
-<script>
+<script> 
   // Lista de canciones
   const canciones = [
     'Jung Kook - 3D (Lyrics) ft. Jack Harlow.mp3',
@@ -92,7 +95,7 @@
 const getRandomSong = () => {
   const randomIndex = Math.floor(Math.random() * canciones.length); // Índice aleatorio
   return canciones[randomIndex];
-};
+}; 
 
 // Función para reproducir una canción aleatoria
 const playRandomSong = () => {
